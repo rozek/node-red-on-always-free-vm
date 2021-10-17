@@ -16,6 +16,8 @@ This repository basically contains instructions to set-up an "always free" VM (p
     * Node-RED may also act as a "classical" web server (i.e., serve static files)
     * CORS may be activated (and configured, if need be)
 
+> Just a small note: if you like this work and plan to use it, consider "starring" this repository (you will find the "Star" button on the top right of this page), so that I know which of my repositories to take most care of.
+
 ## Prerequisites ##
 
 If you want to follow these instructions you should have
