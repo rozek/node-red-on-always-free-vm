@@ -32,3 +32,7 @@ If you want to follow these instructions you should have
     * delete (with the DEL key)
     * navigate (with arrow keys)
     * save and quit (ESC + `:wq`)
+
+## License ##
+
+[MIT License](LICENSE.md)
