@@ -23,7 +23,7 @@ This repository basically contains instructions to set-up an "always free" VM (p
 If you want to follow these instructions you should have
 
 * an email account
-* a credit card available (unfortunately, Oracle requires a credit card although they promise to never charge it)
+* a credit card (unfortunately, Oracle requires a credit card although they promise to never charge it)
 * an SSH application (such as PuTTY on Windows or the `ssh` command on macOS or Linux)
 * basic knowledge in the use of Linux (here: CentOS/RHEL 8) and its command line
 * basic knowledge in the use of `vi`, specifically how to
