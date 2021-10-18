@@ -118,7 +118,7 @@ and test it with
 
 `sudo systemctl status port-redirection`
 
-### Open ports 80 and 443 ###
+### Open Ports 80 and 443 ###
 
 Port 80 is opened for the "certbot" of "Let's Encrypt" (to be configured in a later step), port 443 for Node-RED itself.
 
@@ -137,6 +137,46 @@ Port 1880 may remain open.
     * `sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT`
     * `sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT`
 
+### Reopen Ports 80 and 443 upon Reboot  ###
+
+For some reason, once opened ports do not stay open when the system is rebooted. Therefore, the "workaround" described below is necessary.
+
+* create a file named `web-server-ports.service`<br>`vi web-server-ports.service`
+* insert the following text
+
+```
+# systemd service file to open ports 80 and 443
+
+[Unit]
+Description=TCP ports for Web Servers
+After=multi-user.target
+
+[Service]
+Type=simple
+# Run as root
+User=root
+Group=root
+
+ExecStart=iptables -I INPUT -p tcp --match multiport --dports 80,443 -j ACCEPT
+
+# Tag things in the log
+SyslogIdentifier=Web-Server-Ports
+#StandardOutput=syslog
+
+[Install]
+RequiredBy=node-red.target
+```
+
+* copy that file to `/etc/systemd/system`<br>`sudo cp web-server-ports.service /etc/systemd/system`
+* activate it  with<br>`sudo systemctl enable web-server-ports`
+
+If you like, you may explicitly start the service with
+
+`sudo systemctl start web-server-ports`
+
+and test it with
+
+`sudo systemctl status web-server-ports`
 
 
 ## License ##
