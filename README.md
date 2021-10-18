@@ -186,7 +186,7 @@ By default, the Node-RED editor is located behind path `/`. In most cases, howev
 * search for `httpAdminRoot` and
     * remove the comment characters (`//`) in front of `httpAdminRoot`
     * if wanted, replace path `/admin` by something else
-* save and restart Node-RED (either now or later)
+* save and restart Node-RED (either now or later)<br>`sudo systemctl restart nodered`
 
 > Nota bene: from the next start of the Node-RED server on, the configured path - e.g. `/admin` - must be entered in the address bar of your browser in addition to the name or address of the server in order to reach the Node-RED editor. The original path `/` is from now on intended for content.
 
@@ -197,7 +197,7 @@ If the HTTP(S) endpoints realized as Node-RED flows should also be accessible fr
 * open file `~/.node-red/settings.js` for editing:<br>`vi ~/.node-red/settings.js`
 * search for `httpNodeCors` and
 * remove the comment characters (`//`) in front of `httpNodeCors`
-* save and restart Node-RED (either now or later)
+* save and restart Node-RED (either now or later)<br>`sudo systemctl restart nodered`
 
 If you know how to configure CORS, you may also replace the `*` after `origin` with specific server names and thus restrict CORS again and make it more secure.
 
@@ -212,7 +212,7 @@ However, the affected files are then all publicly accessible - anyone who also w
 * search for `httpStatic` and
     * remove the comment characters (`//`) in front of `httpStatic`
     * replace the path after `httpStatic` with `/home/opc/public`
-* save and restart Node-RED (either now or later)
+* save and restart Node-RED (either now or later)<br>`sudo systemctl restart nodered`
 
 ### Apply for a Domain Name ###
 
@@ -283,6 +283,20 @@ The following approach is recommended instead:
 * `sudo chgrp cert /etc/letsencrypt/archive`
 * `sudo chmod 710 /etc/letsencrypt/live`
 * `sudo chmod 710 /etc/letsencrypt/archive`
+
+### Install Certificates into Node-RED ###
+
+Node-RED has now be told to use HTTPS only and where to find certificate and key needed to secure connections:
+
+* open file `~/.node-red/settings.js` for editing:<br>`vi ~/.node-red/settings.js`
+* search for `requireHttps` and
+    * remove the comment characters (`//`) in front of `requireHttps`
+* search for `https:` and
+    * remove the comment characters (`//`) in front of `https:` and the following lines
+    * replace the path after `key:` with `/etc/letsencrypt/live/<domain-name>/privkey.pem`
+    * replace the path after `cert:` with `/etc/letsencrypt/live/<domain-name>/fullchain.pem`<br>agian, you will have to replace `<domain-name>` with the domain name you applied for before
+* save and restart Node-RED<br>`sudo systemctl restart nodered`
+ 
 
 ## License ##
 
