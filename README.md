@@ -305,6 +305,15 @@ Just test it with
 
 `sudo certbot renew --dry-run`
 
+### Configure a "credentialSecret" for Node-RED ###
+
+In order to prevent an accidental loss of your flows, you should configure a "credentialSecret" for Node-RED:
+
+* open file `~/.node-red/settings.js` for editing:<br>`vi ~/.node-red/settings.js`
+* search for `credentialSecret` and
+    * remove the comment characters (`//`) in front of `credentialSecret`
+    * replace `a-secret-key` with a different passphrase of your choice
+* save and restart Node-RED<br>`sudo systemctl restart nodered`
 
 ## License ##
 
