@@ -110,13 +110,34 @@ RequiredBy=node-red.target
 * copy that file to `/etc/systemd/system`<br>`sudo cp port-redirection.service /etc/systemd/system`
 * activate it  with<br>`sudo systemctl enable port-redirection`
 
-If you like, yopu explicitly start the redirection with
+If you like, you may explicitly start the redirection with
 
 `sudo systemctl start port-redirection`
 
 and test it with
 
 `sudo systemctl status port-redirection`
+
+### Open ports 80 and 443 ###
+
+Port 80 is opened for the "certbot" of "Let's Encrypt" (to be configured in a later step), port 443 for Node-RED itself.
+
+Port 1880 may remain open.
+
+* in the [Oracle Dashboard](https://cloud.oracle.com/) for your account
+    * choose your "Compute Instance"
+    * select "Primary VNIC" -> "Subnet"
+    * select "Default Security List"
+    * add the following two Ingress rules:<br>- "Source CDIR" = 0.0.0.0/0, "Destination Port Range" = 80, Description = "HTTP"<br>- "Source CDIR" = 0.0.0.0/0, "Destination Port Range" = 443, Description = "HTTPS"
+* now use `ssh` to connect with your VM and issue the following commands:
+    * `sudo firewall-cmd --zone=public --add-port=80/tcp --permanent`
+    * `sudo firewall-cmd --zone=public --add-port=443/tcp --permanent`
+    * `sudo firewall-cmd --reload`
+    * `sudo systemctl restart firewalld`
+    * `sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT`
+    * `sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT`
+
+
 
 ## License ##
 
