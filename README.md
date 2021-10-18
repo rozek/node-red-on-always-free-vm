@@ -222,7 +222,7 @@ Fortunately, there are a few providers for such names (and related DNS entries):
 
 * [register for an account](https://ddnss.de/user_new.php), confirm it and [sign-in](https://ddnss.de/login.php)
 * click on "Host erstellen" in the "Quick Menü" of your "Dashboard"
-* enter a symbolic name for your host, choose one of the avialable domains and click on "Weiter"
+* enter a symbolic name for your host, choose one of the available domains and click on "Weiter"
 * set "IP-Mode" to "A (IPv4)" and click on "jetzt erstellen"
 * within the list of your host entries, find the line that contains your newly created host and click on the green icon "Bearbeiten"
 * replace the IP address shown after "IP/URL" (it may be an IPv6 one) with the IPv4 address of your Oracle VM and click on "Ok"
@@ -230,6 +230,30 @@ Fortunately, there are a few providers for such names (and related DNS entries):
 From now on (or after a short period the internet needs for its reconfiguration) your Oracle VM will be accessable using the host name you configured before.
 
 ### Prepare for the Generation of "Let's Encrypt" Certificates ###
+
+The process behind the generation of "Let's Encrypt" certificates requires two tools to be installed: "snap" and "certbot"
+
+#### Install "snap" ####
+
+The original guide to install "snap" on CentOS can be found in the [snap documentation](https://snapcraft.io/docs/installing-snap-on-centos). The following list contains the steps needed for CentOS/RHEL 8:
+
+* `sudo dnf install epel-release`
+* `sudo dnf upgrade`
+* `sudo yum install snapd`
+* `sudo systemctl enable --now snapd.socket`
+* `sudo ln -s /var/lib/snapd/snap /snap`
+* `sudo snap install core` (not to be combined with the following command!)
+* `sudo snap refresh core`
+
+Important: do not combine the last two commands as shown in the "snap" docs - or they will fail!
+
+#### Install "certbot" ####
+
+The ["certbot" documentation](https://certbot.eff.org/lets-encrypt/centosrhel8-other) allows you to select your web server and your operating system in order to get installation instructions specifically for your setup. Here are the steps for CentOS/RHEL 8:
+
+* `sudo dnf remove certbot`
+* `sudo snap install --classic certbot`
+* `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
 
 ## License ##
 
