@@ -294,9 +294,17 @@ Node-RED has now be told to use HTTPS only and where to find certificate and key
 * search for `https:` and
     * remove the comment characters (`//`) in front of `https:` and the following lines
     * replace the path after `key:` with `/etc/letsencrypt/live/<domain-name>/privkey.pem`
-    * replace the path after `cert:` with `/etc/letsencrypt/live/<domain-name>/fullchain.pem`<br>agian, you will have to replace `<domain-name>` with the domain name you applied for before
+    * replace the path after `cert:` with `/etc/letsencrypt/live/<domain-name>/fullchain.pem`<br>again, you will have to replace `<domain-name>` with the domain name you applied for before
 * save and restart Node-RED<br>`sudo systemctl restart nodered`
- 
+
+### Configure automatic Certificate Renewal ###
+
+Since Node-RED has just been instructed to use HTTPS (rather than HTTP), port 80 is still available. Thus, no "pre" or "post" hooks have to be specified and certificate renewal becomes easy.
+
+Just test it with
+
+`sudo certbot renew --dry-run`
+
 
 ## License ##
 
