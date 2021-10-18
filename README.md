@@ -4,7 +4,7 @@ Instructions for the set-up of a Node-RED instance on an "always free" VM provid
 
 This repository basically contains instructions to set-up an "always free" VM (provided by Oracle) with a Node-RED instance which finally has the following characteristics:
 
-* thanks to the Oracle "always free" program
+* thanks to the [Oracle "always free" program](https://www.oracle.com/de/cloud/free/)
     * it's free
     * it's accessible over the internet
     * it's available all around the clock (24/7)
