@@ -201,6 +201,19 @@ If the HTTP(S) endpoints realized as Node-RED flows should also be accessible fr
 
 If you know how to configure CORS, you may also replace the `*` after `origin` with specific server names and thus restrict CORS again and make it more secure.
 
+### Deliver static Files (if desired) ###
+
+If you want the Node-RED server to deliver static files (e.g. web pages), you can activate the corresponding function.
+
+However, the affected files are then all publicly accessible - anyone who also wants to provide non-public files must provide this functionality as a flow in Node-RED itself.
+
+* create a folder for public files<br>`mkdir /home/opc/public`
+* open file `~/.node-red/settings.js` for editing:<br>`vi ~/.node-red/settings.js`
+* search for `httpStatic` and
+    * remove the comment characters (`//`) in front of `httpStatic`
+    * replace the path after `httpStatic` with `/home/opc/public`
+* save and restart Node-RED (either now or later)
+
 ## License ##
 
 [MIT License](LICENSE.md)
