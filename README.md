@@ -42,7 +42,15 @@ This guide begins by refering to a blog post provided by Oracle themselves - but
 * when it comes to choose the operating system for your VM, do not choose "Ubuntu" because the installation script mentioned in the post does not support that OS (this guide assumes that you **choose CentOS**)
 * the instructions want you to upload the public key of an SSH key-pair. If you do not know what this is or how to create it, there is also an [explanation of how to create that key-pair](https://docs.oracle.com/en/cloud/cloud-at-customer/occ-get-started/generate-ssh-key-pair.html)
 * even after adding the mentioned "Ingress Rule", your Node-RED instance will not be reachable in the end - instead, after having set-up everything in your SSH connection to the VM hosted by Oracle, you should additionally submit the following command<br>&nbsp;<br>`sudo iptables -I INPUT -p tcp --dport 1880 -j ACCEPT`
- 
+
+### Initial VM Setup ###
+
+Keeping these hints in mind, you may now follow the [instructions written by Todd Sharp](https://blogs.oracle.com/developers/post/installing-node-red-in-an-always-free-vm-on-oracle-cloud). If it does not immediately work as intended, you may also find [an explanation of how to revert your set-up](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/terminating_resources.htm) quitme useful.
+
+In the end, you should have a working Node-RED instance reachable over the Internet.
+
+However, 
+
 
 
 ## License ##
