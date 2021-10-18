@@ -201,7 +201,7 @@ If the HTTP(S) endpoints realized as Node-RED flows should also be accessible fr
 
 If you know how to configure CORS, you may also replace the `*` after `origin` with specific server names and thus restrict CORS again and make it more secure.
 
-### Deliver static Files (if desired) ###
+### Allow Node-RED to deliver static Files (if desired) ###
 
 If you want the Node-RED server to deliver static files (e.g. web pages), you can activate the corresponding function.
 
@@ -213,6 +213,23 @@ However, the affected files are then all publicly accessible - anyone who also w
     * remove the comment characters (`//`) in front of `httpStatic`
     * replace the path after `httpStatic` with `/home/opc/public`
 * save and restart Node-RED (either now or later)
+
+### Apply for a Domain Name ###
+
+Until now, you will always have to specify the numeric IP address of your Oracle VM in order to access it - nothing you should expect your customers to do. To make it even worse: Let's Encrypt does not generate certificates for servers without a symbolic host name - you will therefore have to go with HTTP - something which gets more difficult with every new version of a modern browser (for security reasons). 
+
+Fortunately, there are a few providers for such names (and related DNS entries): a nice list of such providers can be found at [IONOS](https://www.ionos.de/digitalguide/server/tools/dyndns-anbieter-im-ueberblick/) (in german). **This guide assumes that you request a domain name from [DynDNS Service](https://ddnss.de/)**:
+
+* [register for an account](https://ddnss.de/user_new.php), confirm it and [sign-in](https://ddnss.de/login.php)
+* click on "Host erstellen" in the "Quick Menü" of your "Dashboard"
+* enter a symbolic name for your host, choose one of the avialable domains and click on "Weiter"
+* set "IP-Mode" to "A (IPv4)" and click on "jetzt erstellen"
+* within the list of your host entries, find the line that contains your newly created host and click on the green icon "Bearbeiten"
+* replace the IP address shown after "IP/URL" (it may be an IPv6 one) with the IPv4 address of your Oracle VM and click on "Ok"
+
+From now on (or after a short period the internet needs for its reconfiguration) your Oracle VM will be accessable using the host name you configured before.
+
+### Prepare for the Generation of "Let's Encrypt" Certificates ###
 
 ## License ##
 
