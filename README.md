@@ -255,6 +255,21 @@ The ["certbot" documentation](https://certbot.eff.org/lets-encrypt/centosrhel8-o
 * `sudo snap install --classic certbot`
 * `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
 
+### Request your first Certificate ###
+
+Just issue the following command
+
+`sudo certbot certonly --standalone`
+
+and enter the name of your domain when asked to do so.
+
+Upon success, two files will be written:
+
+* `/etc/letsencrypt/live/<domain-name>/fullchain.pem` and
+* `/etc/letsencrypt/live/<domain-name>/privkey.pem`
+
+where `<domain-name>` stands for the domain name you entered before.
+
 ## License ##
 
 [MIT License](LICENSE.md)
