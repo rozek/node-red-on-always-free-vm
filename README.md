@@ -286,7 +286,7 @@ The following approach is recommended instead:
 
 ### Install Certificates into Node-RED ###
 
-Node-RED has now be told to use HTTPS only and where to find certificate and key needed to secure connections:
+Node-RED has now to be told to use HTTPS only and where to find certificate and key needed to secure connections:
 
 * open file `~/.node-red/settings.js` for editing:<br>`vi ~/.node-red/settings.js`
 * search for `requireHttps` and
