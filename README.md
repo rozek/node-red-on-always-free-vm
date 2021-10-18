@@ -270,6 +270,20 @@ Upon success, two files will be written:
 
 where `<domain-name>` stands for the domain name you entered before.
 
+### Make Certificates accessible for Node-RED ###
+
+By default, "Let's Encrypt" certificates are only accessible for the superuser `root`. Simply changing file ownership or access rules is not useful because every certificate renewal will lead to the same problem again.
+
+The following approach is recommended instead:
+
+* `sudo groupadd cert`
+* `sudo gpasswd -a root cert`
+* `sudo gpasswd -a opc cert`
+* `sudo chgrp cert /etc/letsencrypt/live`
+* `sudo chgrp cert /etc/letsencrypt/archive`
+* `sudo chmod 710 /etc/letsencrypt/live`
+* `sudo chmod 710 /etc/letsencrypt/archive`
+
 ## License ##
 
 [MIT License](LICENSE.md)
