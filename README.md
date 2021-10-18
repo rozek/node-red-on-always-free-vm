@@ -190,6 +190,17 @@ By default, the Node-RED editor is located behind path `/`. In most cases, howev
 
 > Nota bene: from the next start of the Node-RED server on, the configured path - e.g. `/admin` - must be entered in the address bar of your browser in addition to the name or address of the server in order to reach the Node-RED editor. The original path `/` is from now on intended for content.
 
+### Activate CORS (if desired) ###
+
+If the HTTP(S) endpoints realized as Node-RED flows should also be accessible from other servers (e.g., because the static web pages of an online service are located on another server and rely on services provided by this Node-RED instance), you should activate CORS:
+
+* open file `~/.node-red/settings.js` for editing:<br>`vi ~/.node-red/settings.js`
+* search for `httpNodeCors` and
+* remove the comment characters (`//`) in front of `httpNodeCors`
+* save and restart Node-RED (either now or later)
+
+If you know how to configure CORS, you may also replace the `*` after `origin` with specific server names and thus restrict CORS again and make it more secure.
+
 ## License ##
 
 [MIT License](LICENSE.md)
