@@ -73,7 +73,7 @@ AllowIsolate=yes
 
 From now on, the system boots to the `node-red` state every time
 
-### Prepare Node-RED to act as a Web Server ###
+### Prepare Node-RED to act as a Web Server (Part I) ###
 
 Browsers usually expect HTTPS servers on port 443 - if the server is on a different port, the user must explicitly specify that port (which is quite inconvenient and therefore uncommon).
 
@@ -178,6 +178,17 @@ and test it with
 
 `sudo systemctl status web-server-ports`
 
+### Prepare Node-RED to act as a Web Server (Part II) ###
+
+By default, the Node-RED editor is located behind path `/`. In most cases, however, one would like to place a custom start page for potential users at that location - therefore the editor must be moved to another path:
+
+* open file `~/.node-red/settings.js` for editing:<br>`vi ~/.node-red/settings.js`
+* search for `httpAdminRoot` and
+    * remove the comment characters (`//`) in front of `httpAdminRoot`
+    * if wanted, replace path `/admin` by something else
+* save and restart Node-RED (either now or later)
+
+> Nota bene: from the next start of the Node-RED server on, the configured path - e.g. `/admin` - must be entered in the address bar of your browser in addition to the name or address of the server in order to reach the Node-RED editor. The original path `/` is from now on intended for content.
 
 ## License ##
 
