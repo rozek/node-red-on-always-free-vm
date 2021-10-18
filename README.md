@@ -45,7 +45,7 @@ This guide begins by refering to a blog post provided by Oracle themselves - but
 
 ### Initial VM Setup ###
 
-Keeping these hints in mind, you may now follow the [instructions written by Todd Sharp](https://blogs.oracle.com/developers/post/installing-node-red-in-an-always-free-vm-on-oracle-cloud). If it does not immediately work as intended, you may also find [an explanation of how to revert your set-up](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/terminating_resources.htm) quitme useful.
+Keeping these hints in mind, you may now follow the [instructions written by Todd Sharp](https://blogs.oracle.com/developers/post/installing-node-red-in-an-always-free-vm-on-oracle-cloud). If it does not immediately work as intended, you may also find [an explanation of how to revert your set-up](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/terminating_resources.htm) quite useful.
 
 In the end, you should have a working Node-RED instance reachable over the Internet.
 
