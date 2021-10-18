@@ -49,9 +49,29 @@ Keeping these hints in mind, you may now follow the [instructions written by Tod
 
 In the end, you should have a working Node-RED instance reachable over the Internet.
 
-However, 
+However, the current state of that VM has some quirks that need to be fixed first - instructions follow below
 
+### Preparing custom OS Services ###
 
+In the following steps a few "services" are created, which the operating system should start automatically after a reboot - after all other (already existing) services have been started.
+
+For this purpose, a new "target" is to be created first for the boot process, which can be reached after a reboot. The services that are set up later are then explicitly linked to this target.
+
+* create a file named `node-red.target`<br>`vi node-red.target`
+* insert the following text
+
+```
+[Unit]
+Description=Node-RED Target
+Requires=multi-user.target
+After=multi-user.target
+AllowIsolate=yes
+```
+
+* copy that file to `/etc/systemd/system`<br>`sudo cp node-red.target /etc/systemd/system`
+* * activate it  with<br>`sudo systemctl set-default node-red.target`
+
+From now on, the system boots to the `node-red` state every time
 
 ## License ##
 
