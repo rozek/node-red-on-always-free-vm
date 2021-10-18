@@ -69,9 +69,54 @@ AllowIsolate=yes
 ```
 
 * copy that file to `/etc/systemd/system`<br>`sudo cp node-red.target /etc/systemd/system`
-* * activate it  with<br>`sudo systemctl set-default node-red.target`
+* activate it  with<br>`sudo systemctl set-default node-red.target`
 
 From now on, the system boots to the `node-red` state every time
+
+### Prepare Node-RED to act as a Web Server ###
+
+Browsers usually expect HTTPS servers on port 443 - if the server is on a different port, the user must explicitly specify that port (which is quite inconvenient and therefore uncommon).
+
+However, Node-RED may use port 443 only if the process is running with superuser privileges (which should be avoided at all costs).
+
+Therefore a port forwarding from port 443 to port 1880 is set up:
+
+* create a file named `port-redirection.service`<br>`vi port-redirection.service`
+* insert the following text
+
+```
+# systemd service file to redirect requests sent to port 443 to port 1880
+
+[Unit]
+Description=TCP port redirection from 443 to 1880
+After=multi-user.target
+
+[Service]
+Type=simple
+# Run as root
+User=root
+Group=root
+
+ExecStart=iptables -t nat -I PREROUTING -p tcp --dport 443 -j REDIRECT --to-ports 1880
+
+# Tag things in the log
+SyslogIdentifier=Port-Redirection
+#StandardOutput=syslog
+
+[Install]
+RequiredBy=node-red.target
+```
+
+* copy that file to `/etc/systemd/system`<br>`sudo cp port-redirection.service /etc/systemd/system`
+* activate it  with<br>`sudo systemctl enable port-redirection`
+
+If you like, yopu explicitly start the redirection with
+
+`sudo systemctl start port-redirection`
+
+and test it with
+
+`sudo systemctl status port-redirection`
 
 ## License ##
 
