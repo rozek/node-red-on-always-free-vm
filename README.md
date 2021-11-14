@@ -245,7 +245,11 @@ The original guide to install "snap" on CentOS can be found in the [snap documen
 * `sudo snap install core` (not to be combined with the following command!)
 * `sudo snap refresh core`
 
-Important: do not combine the last two commands as shown in the "snap" docs - or they will fail!
+**Important**: do not combine the last two commands as shown in the "snap" docs - or they will fail!
+
+> Nota bene: it may sometimes happen, that `sudo snap install core` refuses to run and instead issues the error message
+>   `error: too early for operation, device not yet seeded or device model not acknowledged`
+> In such a case, just wait a minute and try again.
 
 #### Install "certbot" ####
 
