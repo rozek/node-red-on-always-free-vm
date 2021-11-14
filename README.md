@@ -289,8 +289,8 @@ The following approach is recommended instead:
 * `sudo gpasswd -a opc cert`
 * `sudo chgrp cert /etc/letsencrypt/live`
 * `sudo chgrp cert /etc/letsencrypt/archive`
-* `sudo chmod 710 /etc/letsencrypt/live`
-* `sudo chmod 710 /etc/letsencrypt/archive`
+* `sudo chmod g+rx /etc/letsencrypt/live`
+* `sudo chmod g+rx /etc/letsencrypt/archive`
 
 ### Install Certificates into Node-RED ###
 
