@@ -262,7 +262,8 @@ The ["certbot" documentation](https://certbot.eff.org/lets-encrypt/centosrhel8-o
 ### Request your first Certificate ###
 
 > Nota bene: if you haven't done so yet, please reboot your VM first:<br>&nbsp;<br>
-> &nbsp; `sudo reboot`
+> &nbsp; `sudo reboot`<br>&nbsp;<br>
+> Your VM will then be in the required state for certificate requests.
 
 Just issue the following command
 
