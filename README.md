@@ -26,6 +26,9 @@ If you want to follow these instructions you should have
 
 * an email account
 * a credit card (unfortunately, Oracle requires a credit card although they promise to never charge it)
+
+> **Nota bene**: take care of your credit card's expiration date - your VM may be stopped when your credit card has expired!
+
 * an SSH application (such as PuTTY on Windows or the `ssh` command on macOS or Linux)
 * basic knowledge in the use of Linux (here: CentOS/RHEL 8) and its command line
 * basic knowledge in the use of `vi`, specifically how to
