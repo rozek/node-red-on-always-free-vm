@@ -38,6 +38,8 @@ If you want to follow these instructions you should have
     * navigate (with arrow keys)
     * save and quit (ESC + `:wq`)
 
+> **Nota bene**: if you get browser incompatibility warnings while accessing the Oracle Cloud Console: take these warnings seriously, or it may not work properly, making setup and configuration of a VM even more difficult as it already is...
+
 ## Instructions ##
 
 This guide begins by refering to a blog post provided by Oracle themselves - but before you actually start setting up a basic "always free" VM and install Node-RED, please consider the following tips:
